@@ -9,6 +9,9 @@ A local movement-comparison prototype built with React, FastAPI, and pretrained 
 - Side-by-side and normalized skeleton overlays.
 - Elbow and upper-arm angle comparisons with confidence filtering.
 - Mirror comparison, visibility notes, and JSON measurement export.
+- Equal-sized reference and attempt panels, with uncropped image display.
+- Clear all resets both uploads, frame selection, mirror mode, and results.
+- Responsive chalk-and-cobalt interface with keyboard-accessible help and reduced-motion support.
 - Local processing: videos remain in the browser; only selected frames go to the backend.
 
 ## Requirements
@@ -94,7 +97,7 @@ npm run build
 
 The proof command writes an annotated image and landmark JSON and reports device, loading time, and inference time. Use your own suitable image; no user recordings are committed.
 
-The initial 12 backend tests passed, and browser startup was checked in Edge. Geometry tests use synthetic points; API contract tests explicitly stub inference. These tests do not establish model accuracy. Real-inference benchmarks and an evaluated movement dataset have not been recorded in this repository. A production build previously encountered a local sandbox filesystem restriction; it should be rerun in the target environment.
+The latest backend test run passed all 13 tests, including a real ViTPose preprocessing regression test for the SciPy dependency. The frontend production build passed. Browser checks covered desktop/mobile layouts, help-dialog keyboard behavior, equal studio panel dimensions, and reset behavior. Geometry tests use synthetic points; API contract tests explicitly stub inference. These checks do not establish model accuracy. Real-inference benchmarks and an evaluated movement dataset have not been recorded in this repository.
 
 ## Limits
 
@@ -114,3 +117,10 @@ The initial 12 backend tests passed, and browser startup was checked in Edge. Ge
 - **Backend offline:** check http://127.0.0.1:8000/health and the backend terminal.
 - **First comparison slow:** model downloads occur on first use; inspect backend logs.
 - **Inference error:** read backend logs. The app does not substitute fake pose results.
+
+## Project map
+
+The detailed architecture map covers the frontend, API, model pipeline, geometry, replay results, source files, setup, verification, and limitations.
+
+- [Editable Excalidraw map](docs/ghostcoach-project-map.excalidraw)
+- [PNG preview](docs/ghostcoach-project-map.png)

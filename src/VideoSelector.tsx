@@ -1,5 +1,8 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { UploadSimple, FilmStrip, ImageSquare, ArrowCounterClockwise } from '@phosphor-icons/react';
+import { UploadSimple } from '@phosphor-icons/react/dist/csr/UploadSimple';
+import { FilmStrip } from '@phosphor-icons/react/dist/csr/FilmStrip';
+import { ImageSquare } from '@phosphor-icons/react/dist/csr/ImageSquare';
+import { ArrowCounterClockwise } from '@phosphor-icons/react/dist/csr/ArrowCounterClockwise';
 import type { Capture } from './types';
 
 export type SelectorHandle = { capture: () => Promise<Capture> };

@@ -5,6 +5,7 @@ torch>=2.6
 torchvision>=0.21
 transformers>=4.51,<5
 numpy>=2,<3
+scipy>=1.13,<2
 Pillow>=11
 pytest>=8
 httpx>=0.28

@@ -43,6 +43,7 @@ def process(reference, attempt, mirror):
         engine.load()
         started = perf_counter()
         result = compare(engine.infer(reference), engine.infer(attempt), mirror)
+        engine.last_error = None
         return {**result, "processing_seconds": round(perf_counter() - started, 3),
                 "model_load_seconds": engine.load_seconds, "device": engine.device}
     except ValueError as exc:
@@ -50,6 +51,7 @@ def process(reference, attempt, mirror):
     except HTTPException:
         raise
     except Exception as exc:
+        engine.last_error = str(exc)
         logging.exception("Real pose inference failed")
         raise HTTPException(503, "Pose inference unavailable. Check the backend console and /health for model setup details. No simulated results were generated.") from exc
     finally:
